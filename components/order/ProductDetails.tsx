@@ -16,7 +16,10 @@ export default function ProductDetails({ item }: ProductDetailsProps) {
   const decreaseQuantity = useStore((state) => state.decreaseQuantity);
   const removeItem = useStore((state) => state.removeItem);
 
-  const disableDecreaseButton = useMemo(() => item.quantity === 1, [item]);
+  const disableDecreaseButton = useMemo(
+    () => item.quantity === MIN_ITEM,
+    [item],
+  );
   const disableIncreaseButton = useMemo(
     () => item.quantity === MAX_ITEM,
     [item],

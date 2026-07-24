@@ -5,14 +5,14 @@ import Logo from "@/components/ui/Logo";
 import { OrderWithProducts } from "@/src/types";
 import LatestOrderItem from "@/components/order/LatestOrderItem";
 
-export default function page() {
+export default function OrderPage() {
   const url = "/orders/api";
   const fetcher = () =>
     fetch(url)
       .then((res) => res.json())
       .then((data) => data);
 
-  const { data, error, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
+  const { data, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
     refreshInterval: 60000,
     revalidateOnFocus: false,
   });
